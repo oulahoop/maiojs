@@ -122,7 +122,7 @@ export class CharacterController extends FController {
 
         // Jump
         fKeyboard.onKeyDown(' ', () => {
-            if(!this.spacePressed && this.jumpAvailable) {
+            if(this.jumpAvailable) {
                 this.yVelocity = 38
                 this.jumpAvailable = false;
             }

@@ -13,7 +13,7 @@ export default abstract class Generator {
         this.character = character
     }
 
-    generate(position: { x: number, y: number }): FSprite {
+    generate(position: { x: number, y: number }) {
         let secretSensor = new FComponentEmpty(this.scene, {
             position
         })

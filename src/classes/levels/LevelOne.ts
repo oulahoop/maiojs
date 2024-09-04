@@ -1,20 +1,23 @@
-import { FSprite } from '@fibbojs/2d'
 import { FComponentEmpty, FScene } from '@fibbojs/2d'
 import BlocGenerator from "../blocs/BlocGenerator.ts";
 import GroundGenerator from "../blocs/GroundGenerator.ts";
 import LootBoxGenerator from "../blocs/LootBoxGenerator.ts";
+import Character from "../Character.ts";
 
 export default class LevelOne {
-    private deathZone: FComponentEmpty
+    scene: FScene
+    character: Character
 
-    public constructor() {
+    public constructor(scene: FScene, character: Character) {
+        this.scene = scene
+        this.character = character
     }
 
-    public loadLevel(scene: FScene, character: FSprite) {
-        this.addDeathZone(scene)
-        const blocGenerator = new BlocGenerator(scene, character)
-        const groundGenerator = new GroundGenerator(scene, character)
-        const lootBoxGenerator = new LootBoxGenerator(scene, character)
+    public loadLevel() {
+        this.addDeathZone(this.scene)
+        const blocGenerator = new BlocGenerator(this.scene, this.character)
+        const groundGenerator = new GroundGenerator(this.scene, this.character)
+        const lootBoxGenerator = new LootBoxGenerator(this.scene, this.character)
 
 
 
@@ -32,11 +35,7 @@ export default class LevelOne {
         blocGenerator.generate({ x: 14, y: 4 })
         blocGenerator.generate({ x: 16, y: 4 })
 
-
-        character.onCollisionWith(this.deathZone, () => {
-            character.setPosition({ x: 0, y: 5 })
-        })
-        scene.addComponent(character)
+        scene.addComponent(this.character)
     }
 
     private addDeathZone(scene: FScene) {
@@ -47,6 +46,9 @@ export default class LevelOne {
         })
         deathZone.initCollider()
         scene.addComponent(deathZone)
-        this.deathZone = deathZone
+
+        character.onCollisionWith(deathZone, () => {
+            character.setPosition({ x: 0, y: 5 })
+        })
     }
 }
