@@ -1,17 +1,21 @@
 import { FCharacterControllerKP, FSprite } from '@fibbojs/2d'
 import type { FScene } from '@fibbojs/2d'
+import {CharacterController} from "./controllers/CharacterController.ts";
 
 export default class Character extends FSprite {
   constructor(scene: FScene) {
     super(scene, {
-      texture: 'character_0000.png',
-      position: { x: 0, y: 5 },
-      scale: { x: 0.5, y: 0.5 },
+      texture: 'character.png',
+      position: { x: 2, y: 10 },
+      scale: { x: 1, y: 1 },
     })
 
+    this.setScaleHeight(0.8)
+
     // Initialize the character controller
-    this.controller = new FCharacterControllerKP(scene, {
+    this.controller = new CharacterController(scene, {
       component: this,
+      speed: 1.2
     })
   }
 }
