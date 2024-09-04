@@ -1,8 +1,10 @@
-import { FCharacterControllerKP, FSprite } from '@fibbojs/2d'
+import { FSprite } from '@fibbojs/2d'
 import type { FScene } from '@fibbojs/2d'
 import {CharacterController} from "./controllers/CharacterController.ts";
 
 export default class Character extends FSprite {
+  controller: CharacterController
+
   constructor(scene: FScene) {
     super(scene, {
       texture: 'character.png',

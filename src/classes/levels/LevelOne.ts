@@ -35,38 +35,8 @@ export default class LevelOne {
 
         character.onCollisionWith(this.deathZone, () => {
             character.setPosition({ x: 0, y: 5 })
-            console.log('Sprite collided with the death zone!')
         })
         scene.addComponent(character)
-    }
-
-    private addGround(scene: FScene, position: { x: number, y: number }) {
-        let ground = new FSprite(scene, {
-            texture: 'ground.png',
-            position,
-        })
-        ground.initCollider()
-        scene.addComponent(ground)
-        this.grounds.push(ground)
-    }
-
-    private addBloc(scene: FScene, position: { x: number, y: number }) {
-        let bloc = new FSprite(scene, {
-            texture: 'bloc.png',
-            position,
-        })
-        bloc.initCollider()
-        scene.addComponent(bloc)
-    }
-
-    private addLootBox(scene: FScene, position: { x: number, y: number }) : FSprite {
-        let lootBox = new FSprite(scene, {
-            texture: 'lootbox.png',
-            position,
-        })
-        lootBox.initCollider()
-        scene.addComponent(lootBox)
-        return lootBox
     }
 
     private addDeathZone(scene: FScene) {

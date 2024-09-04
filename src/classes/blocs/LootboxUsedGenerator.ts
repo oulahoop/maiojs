@@ -1,11 +1,12 @@
 import { FScene } from '@fibbojs/2d'
 import { FSprite } from '@fibbojs/2d'
 import Generator from "./Generator.ts";
+import Character from "../Character.ts";
 
 export default class LootboxUsedGenerator extends Generator {
     texture = 'lootbox_used.png'
 
-    public constructor(scene: FScene, character: FSprite) {
+    public constructor(scene: FScene, character: Character) {
         super(scene, character)
     }
 

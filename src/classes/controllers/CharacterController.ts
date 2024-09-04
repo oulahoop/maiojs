@@ -1,8 +1,7 @@
-import * as PIXI from 'pixi.js'
 import RAPIER from '@dimforge/rapier2d'
 import { FKeyboard } from '@fibbojs/event'
-import { FComponent, FController, FShapes } from '@fibbojs/2d'
-import type { FColliderOptions, FControllerOptions, FRigidBodyOptions, FScene } from '@fibbojs/2d'
+import { FController, FShapes } from '@fibbojs/2d'
+import type { FControllerOptions, FScene } from '@fibbojs/2d'
 
 export interface CustomControllerOptions extends FControllerOptions {
     /**

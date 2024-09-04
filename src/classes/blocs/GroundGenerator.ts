@@ -1,6 +1,5 @@
-import {FComponentEmpty, FScene, FSprite} from '@fibbojs/2d'
-import { FSprite } from '@fibbojs/2d'
-import Generator from "./Generator.ts";
+import {FScene, FSprite} from '@fibbojs/2d'
+import Generator from "./Generator.ts"
 
 export default class GroundGenerator extends Generator {
     texture = 'ground.png'

@@ -1,13 +1,14 @@
 import { FScene } from '@fibbojs/2d'
 import { FSprite } from '@fibbojs/2d'
 import { FComponentEmpty } from '@fibbojs/2d'
+import Character from "../Character.ts";
 
 export default abstract class Generator {
     scene: FScene
-    character: FSprite
+    character: Character
     texture: string = ''
 
-    protected constructor(scene: FScene, character: FSprite) {
+    protected constructor(scene: FScene, character: Character) {
         this.scene = scene
         this.character = character
     }
