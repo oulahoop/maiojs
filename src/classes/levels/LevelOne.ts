@@ -1,7 +1,7 @@
 import { FComponentEmpty, FScene } from '@fibbojs/2d'
 import BlocGenerator from "../blocs/BlocGenerator.ts";
 import GroundGenerator from "../blocs/GroundGenerator.ts";
-import LootBoxGenerator from "../blocs/LootBoxGenerator.ts";
+import LootboxGenerator from "../blocs/LootboxGenerator.ts";
 import Character from "../Character.ts";
 
 export default class LevelOne {
@@ -17,7 +17,7 @@ export default class LevelOne {
         this.addDeathZone()
         const blocGenerator = new BlocGenerator(this.scene, this.character)
         const groundGenerator = new GroundGenerator(this.scene, this.character)
-        const lootBoxGenerator = new LootBoxGenerator(this.scene, this.character)
+        const lootBoxGenerator = new LootboxGenerator(this.scene, this.character)
 
 
 
