@@ -1,14 +1,15 @@
-import {FScene, FSprite} from '@fibbojs/2d'
+import {FScene} from '@fibbojs/2d'
 import Generator from "./Generator.ts"
+import Character from "../Character.ts";
 
 export default class GroundGenerator extends Generator {
     texture = 'ground.png'
 
-    public constructor(scene: FScene, character: FSprite) {
+    public constructor(scene: FScene, character: Character) {
         super(scene, character)
     }
 
-    public generate(position: { x: number; y: number }): FSprite {
+    public generate(position: { x: number; y: number }) {
         super.generate(position)
         let ground = new FSprite(this.scene, {
             texture: this.texture,
@@ -16,6 +17,5 @@ export default class GroundGenerator extends Generator {
         })
         ground.initCollider()
         this.scene.addComponent(ground)
-        return ground
     }
 }

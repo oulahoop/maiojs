@@ -11,7 +11,7 @@ export default class LootboxGenerator extends Generator {
         super(scene, character)
     }
 
-    public generate(position: { x: number, y: number }): FSprite {
+    public generate(position: { x: number, y: number }) {
         super.generate(position)
         let lootbox = new FSprite(this.scene, {
             texture: this.texture,

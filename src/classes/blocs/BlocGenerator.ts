@@ -10,7 +10,7 @@ export default class BlocGenerator extends Generator {
         super(scene, character)
     }
 
-    public generate(position: { x: number, y: number }): FSprite {
+    public generate(position: { x: number, y: number }) {
         super.generate(position)
         let bloc = new FSprite(this.scene, {
             texture: this.texture,
@@ -29,6 +29,5 @@ export default class BlocGenerator extends Generator {
         })
 
         this.scene.addComponent(bloc)
-        return bloc
     }
 }
