@@ -11,14 +11,14 @@ import Character from './classes/Character'
   await scene.initPhysics()
   // Debug the scene
   if (import.meta.env.DEV)
-    fDebug(scene)
+    //fDebug(scene)
 
   scene.world.gravity.y = -15
   const character = new Character(scene)
 
   // Load level one
-  const levelOne = new LevelOne()
-  levelOne.loadLevel(scene, character)
+  const levelOne = new LevelOne(scene, character)
+  levelOne.loadLevel()
 
   // Create keyboard
   const keyboard = new FKeyboard(scene)

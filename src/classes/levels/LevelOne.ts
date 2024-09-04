@@ -14,7 +14,7 @@ export default class LevelOne {
     }
 
     public loadLevel() {
-        this.addDeathZone(this.scene)
+        this.addDeathZone()
         const blocGenerator = new BlocGenerator(this.scene, this.character)
         const groundGenerator = new GroundGenerator(this.scene, this.character)
         const lootBoxGenerator = new LootBoxGenerator(this.scene, this.character)
@@ -35,20 +35,20 @@ export default class LevelOne {
         blocGenerator.generate({ x: 14, y: 4 })
         blocGenerator.generate({ x: 16, y: 4 })
 
-        scene.addComponent(this.character)
+        this.scene.addComponent(this.character)
     }
 
-    private addDeathZone(scene: FScene) {
+    private addDeathZone() {
         // Create a death zone
-        const deathZone = new FComponentEmpty(scene, {
+        const deathZone = new FComponentEmpty(this.scene, {
             position: { x: 0, y: -10 },
             scale: { x: 20, y: 1 },
         })
         deathZone.initCollider()
-        scene.addComponent(deathZone)
+        this.scene.addComponent(deathZone)
 
-        character.onCollisionWith(deathZone, () => {
-            character.setPosition({ x: 0, y: 5 })
+        this.character.onCollisionWith(deathZone, () => {
+            this.character.setPosition({ x: 0, y: 5 })
         })
     }
 }

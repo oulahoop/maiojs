@@ -1,4 +1,5 @@
 import {FScene} from '@fibbojs/2d'
+import {FSprite} from '@fibbojs/2d'
 import Generator from "./Generator.ts"
 import Character from "../Character.ts";
 
