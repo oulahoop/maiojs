@@ -11,7 +11,7 @@ import Character from './classes/Character'
   await scene.initPhysics()
   // Debug the scene
   if (import.meta.env.DEV)
-    //fDebug(scene)
+    fDebug(scene)
 
   scene.world.gravity.y = -15
   const character = new Character(scene)
