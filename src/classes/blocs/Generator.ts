@@ -1,5 +1,4 @@
 import { FScene } from '@fibbojs/2d'
-import { FSprite } from '@fibbojs/2d'
 import { FComponentEmpty } from '@fibbojs/2d'
 import Character from "../Character.ts";
 
