@@ -1,18 +1,17 @@
-# starter-2d
-A 2d game starter based on Vite
+# MaioJS
 
-## Usage
+## How to play 
 
-- Clone the repository
+Go to [MaioJS](https://oulahoop.github.io/maiojs/)
+- Use the WASD or ZQSD keys to move the player
+- Use the space key to jump
 
-```bash
-npx tiged fibbojs/starter-2d starter-2d
-```
+## How to install locally
 
 - Install the dependencies
 
 ```bash
-cd starter-2d
+cd maiojs
 npm install
 ```
 
