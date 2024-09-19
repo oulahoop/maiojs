@@ -52,7 +52,7 @@ export class CharacterController extends FController {
 
         // Define default values
         const DEFAULT_OPTIONS = {
-            speed: 1,
+            speed: 2,
         }
         // Apply default options
         options = { ...DEFAULT_OPTIONS, ...options }
@@ -65,7 +65,7 @@ export class CharacterController extends FController {
         this.speed = options.speed
 
         // Initialize the y velocity
-        this.yVelocity = -30
+        this.yVelocity = -50
 
         // Map of the movements (will be updated by the keyboard)
         this.inputs = {
@@ -87,9 +87,14 @@ export class CharacterController extends FController {
         })
         fKeyboard.onKeyDown('a', () => {
             this.inputs.left = true
+            if(this.component.container.scale.x > 0)
+                this.component.container.scale.x *= -1
         })
         fKeyboard.onKeyDown('d', () => {
             this.inputs.right = true
+            if(this.component.container.scale.x < 0)
+                this.component.container.scale.x *= -1
+
         })
         // For AZERTY keyboards
         fKeyboard.onKeyDown('z', () => {
@@ -97,6 +102,8 @@ export class CharacterController extends FController {
         })
         fKeyboard.onKeyDown('q', () => {
             this.inputs.left = true
+            if(this.component.container.scale.x > 0)
+                this.component.container.scale.x *= -1
         })
 
         // Key up
@@ -123,7 +130,7 @@ export class CharacterController extends FController {
         // Jump
         fKeyboard.onKeyDown(' ', () => {
             if(this.jumpAvailable) {
-                this.yVelocity = 38
+                this.yVelocity = 50
                 this.jumpAvailable = false;
             }
         })
@@ -150,7 +157,7 @@ export class CharacterController extends FController {
     /**
      * Return the corrected movements for the current frame.
      */
-    getCorrectedMovements(): { x: number, y: number } {
+    getCorrectedMovements(delta: number): { x: number, y: number } {
         const movementDirection = new RAPIER.Vector2(0, 0)
         // Compute the movement direction
         movementDirection.x = this.inputs.left ? -1 : this.inputs.right ? 1 : 0
@@ -167,15 +174,13 @@ export class CharacterController extends FController {
             RAPIER.QueryFilterFlags.EXCLUDE_SENSORS,
         )
 
-        // If yVelocity is not 0, apply gravity
+        // Apply gravity
         if (this.yVelocity > this.scene.world.gravity.y) {
-            this.yVelocity += this.scene.world.gravity.y * 0.00981 * 4
+            this.yVelocity += this.scene.world.gravity.y * delta * 11
         }
         else {
             this.yVelocity = this.scene.world.gravity.y
         }
-
-
 
         // Get the corrected movement
         return this.characterController.computedMovement()
@@ -183,7 +188,7 @@ export class CharacterController extends FController {
 
     onFrame(delta: number): void {
         // Get the corrected movement
-        const correctedMovement = this.getCorrectedMovements()
+        const correctedMovement = this.getCorrectedMovements(delta)
 
         // Apply the movement to the rigid body
         this.component.rigidBody?.rigidBody.setNextKinematicTranslation({

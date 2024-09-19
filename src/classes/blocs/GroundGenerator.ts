@@ -11,7 +11,10 @@ export default class GroundGenerator extends Generator {
     }
 
     public generate(position: { x: number; y: number }) {
+        // Initialise le secret sensor pour recuperer le jump
         super.generate(position)
+
+        // Cree le sol
         let ground = new FSprite(this.scene, {
             texture: this.texture,
             position,

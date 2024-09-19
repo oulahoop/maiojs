@@ -1,9 +1,10 @@
 import './style.css'
-import { FAttachedCamera, FScene } from '@fibbojs/2d'
+import { FScene } from '@fibbojs/2d'
 import LevelOne from './classes/levels/LevelOne'
 import { fDebug } from '@fibbojs/devtools'
 import { FKeyboard } from '@fibbojs/event'
 import Character from './classes/Character'
+import { Camera } from "./classes/camera/Camera.ts";
 
 (async () => {
   const scene = new FScene()
@@ -26,8 +27,9 @@ import Character from './classes/Character'
     character.setPosition({ x: 0, y: 5 })
   })
 
-  // Attach a camera to the character
-  scene.camera = new FAttachedCamera(scene, {
+  scene.camera = new Camera(scene, {
     target: character,
+    constY: -5,
+    zoom: 1000
   })
 })()

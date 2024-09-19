@@ -1,5 +1,5 @@
 import { FSprite } from '@fibbojs/2d'
-import type { FScene } from '@fibbojs/2d'
+import { FScene } from '@fibbojs/2d'
 import {CharacterController} from "./controllers/CharacterController.ts";
 
 export default class Character extends FSprite {
@@ -13,7 +13,6 @@ export default class Character extends FSprite {
     })
 
     this.setScaleHeight(0.8)
-
     // Initialize the character controller
     this.controller = new CharacterController(scene, {
       component: this,

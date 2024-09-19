@@ -6,6 +6,7 @@ import Character from "../Character.ts";
 
 export default class LootboxGenerator extends Generator {
     texture = 'lootbox.png'
+    audio = new Audio('maiojs/assets/coin.mp3')
 
     public constructor(scene: FScene, character: Character) {
         super(scene, character)
@@ -24,6 +25,7 @@ export default class LootboxGenerator extends Generator {
         lootbox.initCollider()
 
         this.character.onCollisionWith(lootbox, () => {
+            this.audio.play()
             this.character.controller.yVelocity = 0
             let position = lootbox.position
             this.scene.removeComponent(lootbox)

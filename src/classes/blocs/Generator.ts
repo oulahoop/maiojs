@@ -12,15 +12,13 @@ export default abstract class Generator {
         this.character = character
     }
 
-    generate(position: { x: number, y: number }) {
+    generate(position: { x: number, y: number }, scale: { x: number, y: number } = { x: 1, y: 1 }) {
         let secretSensor = new FComponentEmpty(this.scene, {
-            position
+            position : { x: position.x, y: position.y + 0.2 },
+            scale: scale
         })
 
-        secretSensor.initSensor({
-            'scale': {x: 0.8, y: 0.2},
-            'position': {x: 0, y: 0.5},
-        })
+        secretSensor.initSensor()
 
         this.character.onCollisionWith(secretSensor, () => {
             if(!this.character.controller.jumpAvailable) {
