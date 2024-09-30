@@ -4,7 +4,7 @@ import Generator from "./Generator.ts"
 import Character from "../Character.ts";
 
 export default class GroundGenerator extends Generator {
-    texture = 'ground.png'
+    texture = 'sprites/ground.png'
 
     public constructor(scene: FScene, character: Character) {
         super(scene, character)

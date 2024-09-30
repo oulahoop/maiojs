@@ -4,7 +4,7 @@ import Generator from "./Generator.ts";
 import Character from "../Character.ts";
 
 export default class TubeGenerator extends Generator {
-    texture = 'tube.png'
+    texture = 'sprites/tube.png'
 
     public constructor(scene: FScene, character: Character) {
         super(scene, character)
@@ -20,9 +20,9 @@ export default class TubeGenerator extends Generator {
 
 
         tube.initCollider()
+
         tube.initSensor({
-            'scale': {x: 0.8, y: 0.2},
-            'position': {x: 0, y: -0.5},
+            'scale': {x: scale.x + 0.2, y: scale.y},
         })
 
         this.scene.addComponent(tube)

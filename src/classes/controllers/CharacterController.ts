@@ -150,7 +150,7 @@ export class CharacterController extends FController {
         // Initialize a sensor
         this.component.initSensor({
             shape: FShapes.SQUARE,
-            scale: { x: 0.8, y: 1.5 },
+            scale: { x: 1, y: 1.5 },
         })
     }
 

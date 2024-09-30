@@ -9,14 +9,14 @@ export default class BasicEnemy extends FSprite {
     private positionFinale = { x: 0, y: 0 }
     public topSensor: FComponentEmpty
 
-    private audio = new Audio('maiojs/assets/kill.mp3')
+    private audio = new Audio('maiojs/assets/sounds/kill.mp3')
 
     constructor(scene: FScene,
                 positionInitiale: { x: number, y: number },
                 positionFinale: { x: number, y: number }
     ) {
         super(scene, {
-            texture: 'goomba.png',
+            texture: 'sprites/goomba.png',
             position: positionInitiale,
             scale: { x: 1, y: 1 },
         })
@@ -32,7 +32,7 @@ export default class BasicEnemy extends FSprite {
 
         this.topSensor.initSensor({
             'scale': {x: 0.8, y: 0.3},
-            'position': {x: 0, y: -0.5},
+            'position': {x: 0, y: -0.7},
         })
 
         this.scene.addComponent(this.topSensor)

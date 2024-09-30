@@ -1,13 +1,12 @@
 import { FScene, FSprite, FComponentEmpty } from '@fibbojs/2d'
 import Character from "../Character.ts";
 
-export default class Bloc extends FSprite {
+export default class LootboxUsed extends FSprite {
     topSensor: FComponentEmpty
-    audio= new Audio('maiojs/assets/sounds/coin.mp3')
 
     public constructor(scene: FScene, position: { x: number, y: number }) {
         super(scene,  {
-            texture: 'sprites/bloc.png',
+            texture: 'sprites/lootbox_used.png',
             position: position
         })
 
@@ -33,6 +32,7 @@ export default class Bloc extends FSprite {
     }
 
     initCollision() {
+        // If the character collides with the top sensor, it means it's on top of the bloc
         this.topSensor.onCollisionWith(Character, ({component}) => {
             const character = component as Character
             if(!character.controller.jumpAvailable) {
@@ -40,12 +40,10 @@ export default class Bloc extends FSprite {
             }
         })
 
+        // If the character collides with the bloc, it means it's hitting it from the bottom
         this.onCollisionWith(Character, ({component}) => {
-            this.audio.play()
             const character = component as Character
             character.controller.yVelocity = 0
-            this.scene.removeComponent(this)
-            this.scene.removeComponent(this.topSensor)
         })
     }
 

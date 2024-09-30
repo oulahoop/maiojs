@@ -7,16 +7,16 @@ export default class Character extends FSprite {
 
   constructor(scene: FScene) {
     super(scene, {
-      texture: 'character.png',
+      texture: 'sprites/character.png',
       position: { x: 2, y: 10 },
       scale: { x: 1, y: 1 },
     })
 
-    this.setScaleHeight(0.8)
     // Initialize the character controller
     this.controller = new CharacterController(scene, {
       component: this,
       speed: 1.2
     })
+
   }
 }

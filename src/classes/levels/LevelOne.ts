@@ -1,14 +1,15 @@
 import { FComponentEmpty, FScene } from '@fibbojs/2d'
 import GroundGenerator from "../blocs/GroundGenerator.ts";
-import LootboxGenerator from "../blocs/LootboxGenerator.ts";
 import Character from "../Character.ts";
 import TubeGenerator from "../blocs/TubeGenerator.ts";
 import BasicEnemy from "../enemy/BasicEnemy.ts";
 import Bloc from "../blocs/Bloc.ts";
+import Lootbox from "../blocs/Lootbox.ts";
 
 export default class LevelOne {
     scene: FScene
     character: Character
+    coin: number = 0
 
     public constructor(scene: FScene, character: Character) {
         this.scene = scene
@@ -18,7 +19,6 @@ export default class LevelOne {
     public loadLevel() {
         this.addDeathZone()
         const groundGenerator = new GroundGenerator(this.scene, this.character)
-        const lootBoxGenerator = new LootboxGenerator(this.scene, this.character)
         const tubeGenerator = new TubeGenerator(this.scene, this.character)
 
 
@@ -27,20 +27,14 @@ export default class LevelOne {
             groundGenerator.generate({ x: x - 5, y: -2 })
         }
 
-        lootBoxGenerator.generate({ x: 7, y: 4 })
-        lootBoxGenerator.generate({ x: 13, y: 4 })
-        lootBoxGenerator.generate({ x: 14, y: 8 })
-        lootBoxGenerator.generate({ x: 15, y: 4 })
+        new Lootbox(this.scene, { x: 7, y: 4 }, 'coin')
+        new Lootbox(this.scene, { x: 13, y: 4 }, 'coin')
+        new Lootbox(this.scene, { x: 14, y: 8 }, 'mushroom')
+        new Lootbox(this.scene, { x: 15, y: 4 }, 'coin')
 
         new Bloc(this.scene, { x: 12, y: 4 })
         new Bloc(this.scene, { x: 14, y: 4 })
         new Bloc(this.scene, { x: 16, y: 4 })
-
-        /*
-        blocGenerator.generate({ x: 12, y: 4 })
-        blocGenerator.generate({ x: 14, y: 4 })
-        blocGenerator.generate({ x: 16, y: 4 })
-        */
 
         tubeGenerator.generate({ x: 30, y: 1 }, { x: 3, y: 3})
         tubeGenerator.generate({ x: 38, y: 2 }, { x: 3, y: 5})
